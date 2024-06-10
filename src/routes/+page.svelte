@@ -1,13 +1,45 @@
 <script lang="ts">  
     import Header from "$lib/components/Header.svelte"
+
+    import { onMount } from "svelte";
+
+    onMount(() => {
+        const script = document.createElement('script');
+        script.src = '/fb-sdk.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        // get_login_status()
+    })
+
+    function login() {
+        // @ts-ignore
+        if(typeof FB !== undefined) {
+            // @ts-ignore
+            FB.login((response: any) => {}, { scope: "email" })
+        }
+    }
+    
+    function get_login_status() {
+        // @ts-ignore
+        if(typeof FB !== undefined) {
+            // @ts-ignore
+            FB.getLoginStatus(function(response: any) {
+                console.log(response)
+            });
+        }
+    }
 </script>
 
-    <div class="hero">
-        <h1>Crea sitios web con Inteligencia artificial</h1>
-        <p>Que vendan</p>
+<div class="hero">
+    <h1>Crea sitios web con Inteligencia artificial</h1>
+    <p>Que vendan</p>
 
-        <a class="cta" href="/">Crear cuenta gratis</a>
-    </div>
+    <a class="cta" href="/">Crear cuenta gratis</a>
+    <button on:click={login}>Conectar facebook</button>
+</div>
+
+
 
 <style>
     .hero {
