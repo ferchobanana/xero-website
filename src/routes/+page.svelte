@@ -16,7 +16,7 @@
         // @ts-ignore
         if(typeof FB !== undefined) {
             // @ts-ignore
-            FB.login((response: any) => {}, {})
+            FB.login((response: any) => {}, {scope: 'public_profile,email,ads_management,pages_read_engagement,ads_read'})
         }
     }
     
