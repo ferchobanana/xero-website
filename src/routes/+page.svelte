@@ -16,7 +16,7 @@
         // @ts-ignore
         if(typeof FB !== undefined) {
             // @ts-ignore
-            FB.login((response: any) => {}, { scope: "email" })
+            FB.login((response: any) => {}, {})
         }
     }
     
